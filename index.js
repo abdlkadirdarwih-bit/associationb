@@ -115,20 +115,20 @@ app.post("/api/auth/login", async (req, res) => {
 });
 
 //  Change Password Route
-app.post("/api/auth/change-password", async (req, res) => {
-  const { email, oldPassword,newPassword } = req.body;
-  const user = await User.findOne({ email: email.toLowerCase() });
-  if (!user) return res.status(400).json({ message: "User not found" });
+// app.post("/api/auth/change-password", async (req, res) => {
+//   const { email, oldPassword,newPassword } = req.body;
+//   const user = await User.findOne({ email: email.toLowerCase() });
+//   if (!user) return res.status(400).json({ message: "User not found" });
 
-  //  Verify old password
-  const valid = await user.validatePassword(oldPassword);
-  if (!valid) return res.status(400).json({ message: "Old password is incorrect" });
+//   //  Verify old password
+//   const valid = await user.validatePassword(oldPassword);
+//   if (!valid) return res.status(400).json({ message: "Old password is incorrect" });
 
-  await user.setPassword(newPassword);
-  await user.save();
+//   await user.setPassword(newPassword);
+//   await user.save();
 
-  res.json({ message: "Password updated successfully" });
-});
+//   res.json({ message: "Password updated successfully" });
+// });
 
 //  Register Route
 app.post("/api/auth/register", async (req, res) => {
