@@ -29,8 +29,8 @@ const cors = require("cors")
 // const bodyParser = require("body-parser");
  
 
-// const fs = require('fs');
-// const path = require('path');
+const fs = require('fs');
+const path = require('path');
  
 
 // event activities 
@@ -74,7 +74,7 @@ app.use(cors());
 // }));
 
 // app.use(bodyParser.json());
-// app.use('/uploads', express.static(path.join(__dirname, 'uploads'))); // serve uploaded files
+app.use('/uploads', express.static(path.join(__dirname, 'uploads'))); // serve uploaded files
 
 // mongoose.connect('mongodb://127.0.0.1:27017/associationDB')
  const URL = process.env.MONGODB_URL;
@@ -98,10 +98,10 @@ mongoose.connect(URL)
 
 
 //  Ensure uploads folder exists
-// const uploadDir = path.join(__dirname, 'uploads');
-// if (!fs.existsSync(uploadDir)) {
-//   fs.mkdirSync(uploadDir);
-// }
+const uploadDir = path.join(__dirname, 'uploads');
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir);
+}
 
 app.post("/api/auth/login", async (req, res) => {
   const { email, password } = req.body;
