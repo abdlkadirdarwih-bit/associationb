@@ -188,11 +188,11 @@ app.post("/api/auth/register", async (req, res) => {
 // });
 
 
-app.get("/events" , (req,res) => {
- EventModel.find({}) //حتىalways returns an array, even  if empty .
-    .then(event => res.json(event))     // sends array of events
-    .catch(err => res.json(err))
-})
+// app.get("/events" , (req,res) => {
+//  EventModel.find({}) //حتىalways returns an array, even  if empty .
+//     .then(event => res.json(event))     // sends array of events
+//     .catch(err => res.json(err))
+// })
 
  
 // // true
