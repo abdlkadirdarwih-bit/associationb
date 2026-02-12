@@ -294,12 +294,12 @@ app.get("/services", async (req, res) => {
 });
 
 
-app.get("/getService/:id" , (req,res) => {
-    const id = req.params.id;
-    EventModel.findById({_id:id})
-    .then(event => res.json(event)) 
-    .catch(err => res.json(err))
-})
+// app.get("/getService/:id" , (req,res) => {
+//     const id = req.params.id;
+//     EventModel.findById({_id:id})
+//     .then(event => res.json(event)) 
+//     .catch(err => res.json(err))
+// })
 app.post("/createservices", async (req, res) => {
   try {
     const service = await ServiceModel.create(req.body);
@@ -312,28 +312,28 @@ app.post("/createservices", async (req, res) => {
 
 
 
-app.put("/services/:id", async (req, res) => {
-  try {
-    const updated = await ServiceModel.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true }
-    );
-    res.json(updated);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+// app.put("/services/:id", async (req, res) => {
+//   try {
+//     const updated = await ServiceModel.findByIdAndUpdate(
+//       req.params.id,
+//       req.body,
+//       { new: true }
+//     );
+//     res.json(updated);
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 
-app.delete("/services/:id", async (req, res) => {
-  try {
-    await ServiceModel.findByIdAndDelete(req.params.id);
-    res.json({ message: "Service deleted" });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+// app.delete("/services/:id", async (req, res) => {
+//   try {
+//     await ServiceModel.findByIdAndDelete(req.params.id);
+//     res.json({ message: "Service deleted" });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 
 
