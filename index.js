@@ -187,6 +187,7 @@ app.post("/api/auth/register", async (req, res) => {
 //   }
 // });
 
+// // true
 
 app.get("/events" , (req,res) => {
  EventModel.find({}) //حتىalways returns an array, even  if empty .
@@ -195,7 +196,6 @@ app.get("/events" , (req,res) => {
 })
 
  
-// // true
 
 app.get("/getEvent/:id" , (req,res) => {
     const id = req.params.id;
@@ -251,10 +251,6 @@ app.put("/updateEvent/:id" , (req,res) => {
 })  
 
 
-
-
-
-
 app.delete("/deleteEvent/:id", async (req, res) => {
   const id = req.params.id;
   try {
@@ -272,7 +268,7 @@ app.delete("/deleteEvent/:id", async (req, res) => {
 
 
 
-services
+// services
 
 app.get("/services", async (req, res) => {
   try {
