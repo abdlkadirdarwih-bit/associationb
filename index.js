@@ -34,7 +34,7 @@ const path = require('path');
  
 
 // event activities 
-// const EventModel = require('./models/event.js')
+const EventModel = require('./models/event.js')
 const ServiceModel = require('./models/service.js')
 
 // const ContactModel = require('./models/contact.js')
