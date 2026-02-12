@@ -152,17 +152,17 @@ app.post("/api/auth/register", async (req, res) => {
 
 //ContactModel
 
-app.post('/contactassociation', (req, res) => {
-    // console.log(" Incoming order:", req.body); 
-     // للتأكد من وصول البيانات
+// app.post('/contactassociation', (req, res) => {
+//     // console.log(" Incoming order:", req.body); 
+//      // للتأكد من وصول البيانات
 
-  ContactModel.create(req.body)
-    .then(contactsch=>{
-            console.log(" Saved order:", contactsch);
+//   ContactModel.create(req.body)
+//     .then(contactsch=>{
+//             console.log(" Saved order:", contactsch);
 
-       res.json(contactsch)})
-    .catch(err => res.json(err));
-})
+//        res.json(contactsch)})
+//     .catch(err => res.json(err));
+// })
 
 
 
@@ -188,11 +188,11 @@ app.post('/contactassociation', (req, res) => {
 // });
 
 
-// app.get("/events" , (req,res) => {
-//  EventModel.find({}) //حتىalways returns an array, even  if empty .
-//     .then(event => res.json(event))     // sends array of events
-//     .catch(err => res.json(err))
-// })
+app.get("/events" , (req,res) => {
+ EventModel.find({}) //حتىalways returns an array, even  if empty .
+    .then(event => res.json(event))     // sends array of events
+    .catch(err => res.json(err))
+})
 
  
 // // true
@@ -206,26 +206,26 @@ app.post('/contactassociation', (req, res) => {
 
 
 
-// app.post("/createEventBase64", async (req, res) => {
-//   try {
-//     const { date, place, title, text, mainImage, images } = req.body;
+app.post("/createEventBase64", async (req, res) => {
+  try {
+    const { date, place, title, text, mainImage, images } = req.body;
 
-//     const newEvent = new EventModel({
-//       mainImage: mainImage || "",
-//       images: images || [],
-//       date,
-//       place,
-//       title,
-//       text,
-//     });
+    const newEvent = new EventModel({
+      mainImage: mainImage || "",
+      images: images || [],
+      date,
+      place,
+      title,
+      text,
+    });
 
-//     const savedEvent = await newEvent.save();
-//     res.status(201).json(savedEvent);
-//   } catch (err) {
-//     console.error(err);
-//     res.status(500).json({ error: err.message });
-//   }
-// });
+    const savedEvent = await newEvent.save();
+    res.status(201).json(savedEvent);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: err.message });
+  }
+});
 
 
 // app.put("/updateEvent/:id" , (req,res) => {
