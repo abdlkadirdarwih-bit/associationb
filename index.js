@@ -166,117 +166,107 @@ app.post('/contactassociation', (req, res) => {
 
 
 
-app.get('/contactschool', async (req, res) => {
-  try {
-    const contacts = await ContactModel.find();
-        // console.log(" Sending contacts:", contacts); 
+// app.get('/contactschool', async (req, res) => {
+//   try {
+//     const contacts = await ContactModel.find();
+//         // console.log(" Sending contacts:", contacts); 
 
-    res.json(contacts);
-  } catch (err) {
-    res.status(500).json({ error: "Failed to fetch contacts" });
-  }
-});
+//     res.json(contacts);
+//   } catch (err) {
+//     res.status(500).json({ error: "Failed to fetch contacts" });
+//   }
+// });
 
 
-app.delete("/deleteMessage/:id", async (req, res) => {
-  try {
-    await ContactModel.findByIdAndDelete(req.params.id);
-    res.json({ success: true, message: "Message deleted" });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+// app.delete("/deleteMessage/:id", async (req, res) => {
+//   try {
+//     await ContactModel.findByIdAndDelete(req.params.id);
+//     res.json({ success: true, message: "Message deleted" });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
-// app.post('/contactschool', (req, res) => {
-//     // console.log(" Incoming order:", req.body); 
-//      // للتأكد من وصول البيانات
 
-//   ContactModel.create(req.body)
-//     .then(contactsch=>{
-//             console.log(" Saved order:", contactsch);
-
-//        res.json(contactsch)})
-//     .catch(err => res.json(err));
+// app.get("/events" , (req,res) => {
+//  EventModel.find({}) //حتىalways returns an array, even  if empty .
+//     .then(event => res.json(event))     // sends array of events
+//     .catch(err => res.json(err))
 // })
-app.get("/events" , (req,res) => {
- EventModel.find({}) //حتىalways returns an array, even  if empty .
-    .then(event => res.json(event))     // sends array of events
-    .catch(err => res.json(err))
-})
 
  
-// true
+// // true
 
-app.get("/getEvent/:id" , (req,res) => {
-    const id = req.params.id;
-    EventModel.findById({_id:id})
-    .then(event => res.json(event)) 
-    .catch(err => res.json(err))
-})
-
-
-
-app.post("/createEventBase64", async (req, res) => {
-  try {
-    const { date, place, title, text, mainImage, images } = req.body;
-
-    const newEvent = new EventModel({
-      mainImage: mainImage || "",
-      images: images || [],
-      date,
-      place,
-      title,
-      text,
-    });
-
-    const savedEvent = await newEvent.save();
-    res.status(201).json(savedEvent);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: err.message });
-  }
-});
+// app.get("/getEvent/:id" , (req,res) => {
+//     const id = req.params.id;
+//     EventModel.findById({_id:id})
+//     .then(event => res.json(event)) 
+//     .catch(err => res.json(err))
+// })
 
 
-app.put("/updateEvent/:id" , (req,res) => {
-    const id = req.params.id;
-    EventModel.findByIdAndUpdate({_id:id}, {
-// Updated fields
-     mainImage	: req.body.mainImage	,  
-      images	: req.body.images	,  
-      date	: req.body.date,  
-     place: req.body.place,  
-           title : req.body.title , 
-         text: req.body.text,  
+
+// app.post("/createEventBase64", async (req, res) => {
+//   try {
+//     const { date, place, title, text, mainImage, images } = req.body;
+
+//     const newEvent = new EventModel({
+//       mainImage: mainImage || "",
+//       images: images || [],
+//       date,
+//       place,
+//       title,
+//       text,
+//     });
+
+//     const savedEvent = await newEvent.save();
+//     res.status(201).json(savedEvent);
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).json({ error: err.message });
+//   }
+// });
+
+
+// app.put("/updateEvent/:id" , (req,res) => {
+//     const id = req.params.id;
+//     EventModel.findByIdAndUpdate({_id:id}, {
+// // Updated fields
+//      mainImage	: req.body.mainImage	,  
+//       images	: req.body.images	,  
+//       date	: req.body.date,  
+//      place: req.body.place,  
+//            title : req.body.title , 
+//          text: req.body.text,  
  
             
 
-    })
-    .then(event => res.json(event))
-            // .then(user => res.json(user))
+//     })
+//     .then(event => res.json(event))
+//             // .then(user => res.json(user))
 
-        // .then(groups => res.json(groups))
+//         // .then(groups => res.json(groups))
 
-    .catch(err => res.json(err))
-})  
-
-
+//     .catch(err => res.json(err))
+// })  
 
 
 
 
-app.delete("/deleteEvent/:id", async (req, res) => {
-  const id = req.params.id;
-  try {
-    const deletedUser = await EventModel.findByIdAndDelete(id);
-    if (!deletedUser) {
-      return res.status(404).json({ message: "User not found" });
-    }
-    res.json(deletedUser);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
+
+
+// app.delete("/deleteEvent/:id", async (req, res) => {
+//   const id = req.params.id;
+//   try {
+//     const deletedUser = await EventModel.findByIdAndDelete(id);
+//     if (!deletedUser) {
+//       return res.status(404).json({ message: "User not found" });
+//     }
+//     res.json(deletedUser);
+//   } catch (err) {
+//     res.status(500).json({ error: err.message });
+//   }
+// });
 
 
 
