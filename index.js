@@ -152,40 +152,40 @@ app.post("/api/auth/register", async (req, res) => {
 
 //ContactModel
 
-// app.post('/contactassociation', (req, res) => {
-//     // console.log(" Incoming order:", req.body); 
-//      // للتأكد من وصول البيانات
+app.post('/contactassociation', (req, res) => {
+    // console.log(" Incoming order:", req.body); 
+     // للتأكد من وصول البيانات
 
-//   ContactModel.create(req.body)
-//     .then(contactsch=>{
-//             console.log(" Saved order:", contactsch);
+  ContactModel.create(req.body)
+    .then(contactsch=>{
+            console.log(" Saved order:", contactsch);
 
-//        res.json(contactsch)})
-//     .catch(err => res.json(err));
-// })
-
-
-
-// app.get('/contactschool', async (req, res) => {
-//   try {
-//     const contacts = await ContactModel.find();
-//         // console.log(" Sending contacts:", contacts); 
-
-//     res.json(contacts);
-//   } catch (err) {
-//     res.status(500).json({ error: "Failed to fetch contacts" });
-//   }
-// });
+       res.json(contactsch)})
+    .catch(err => res.json(err));
+})
 
 
-// app.delete("/deleteMessage/:id", async (req, res) => {
-//   try {
-//     await ContactModel.findByIdAndDelete(req.params.id);
-//     res.json({ success: true, message: "Message deleted" });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
+
+app.get('/contactschool', async (req, res) => {
+  try {
+    const contacts = await ContactModel.find();
+        // console.log(" Sending contacts:", contacts); 
+
+    res.json(contacts);
+  } catch (err) {
+    res.status(500).json({ error: "Failed to fetch contacts" });
+  }
+});
+
+
+app.delete("/deleteMessage/:id", async (req, res) => {
+  try {
+    await ContactModel.findByIdAndDelete(req.params.id);
+    res.json({ success: true, message: "Message deleted" });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 // // true
 
